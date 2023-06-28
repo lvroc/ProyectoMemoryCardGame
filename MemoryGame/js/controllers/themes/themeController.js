@@ -1,5 +1,5 @@
 import { Controller } from "../controller.js";
-import { ThemesView } from "./themesView.js";
+import { ThemesView } from "./themeView.js";
 
 export class ThemesController extends Controller{
     constructor(gameManager,parent){
