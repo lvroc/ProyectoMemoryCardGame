@@ -2,6 +2,9 @@ export const div = function(attributes,parent){
     return createElement('div',attributes,parent)
 }
 
+export const p = function (attributes, parent) {
+    return createElement('p', attributes, parent)
+}
 
 export const createElement = function(type, attributes, parent){
     var element =  document.createElement(type);

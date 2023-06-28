@@ -1,3 +1,4 @@
+import { div } from "../../libs/html.js";
 import { View } from "../view.js";
 
 export class LoginView extends View{
@@ -5,10 +6,11 @@ export class LoginView extends View{
         super(controller,parent);
         this.container.className = 'loginView';
 
-        var loginBtn = document.createElement('div');
-        this.container.appendChild(loginBtn);
-        loginBtn.innerHTML = 'Login';
-        loginBtn.className = 'game-button';
+        var loginBtn = div({
+            innerHTML: 'Login',
+            appendChild: 'loginBtn',
+            className: 'game-button'
+        }, this.container);
 
     
 

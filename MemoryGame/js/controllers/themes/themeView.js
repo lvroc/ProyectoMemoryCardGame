@@ -1,3 +1,4 @@
+import { div } from "../../libs/html.js";
 import { View } from "../view.js";
 
 export class ThemesView extends View{
@@ -5,20 +6,19 @@ export class ThemesView extends View{
         super(controller,parent);
         this.container.className = 'themesView';
 
-        var foodBtn = document.createElement('div');
-        this.container.appendChild(foodBtn);
-        foodBtn.innerHTML = 'Food';
-        foodBtn.className = 'game-button';
+        var foodBtn = div({appendChild:'foodBtn',innerHTML:'Food',className:'game-button'},this.container);
 
-        var facesBtn = document.createElement('div');
-        this.container.appendChild(facesBtn);
-        facesBtn.innerHTML = 'Faces';
-        facesBtn.className = 'game-button';
+        var facesBtn = div({
+            appendChild: 'facesBtn',
+            innerHTML: 'Faces',
+            className: 'game-button'
+        }, this.container);
 
-        var flagsBtn = document.createElement('div');
-        this.container.appendChild(flagsBtn);
-        flagsBtn.innerHTML = 'Flags';
-        flagsBtn.className = 'game-button';
+        var flagsBtn = div({
+            appendChild: 'flagsBtn',
+            innerHTML: 'Flags',
+            className: 'game-button'
+        }, this.container);
 
         
 

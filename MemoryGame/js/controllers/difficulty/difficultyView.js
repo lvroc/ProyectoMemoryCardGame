@@ -1,3 +1,4 @@
+import { div } from "../../libs/html.js";
 import { View } from "../view.js";
 
 export class DifficultyView extends View{
@@ -5,20 +6,11 @@ export class DifficultyView extends View{
         super(controller,parent);
         this.container.className = 'difficultyView';
 
-        var lowBtn = document.createElement('div');
-        this.container.appendChild(lowBtn);
-        lowBtn.innerHTML = 'Low';
-        lowBtn.className = 'game-button';
+        var lowBtn = div({innerHTML:'Low',appendChild:'lowBtn',className:'game-button'},this.container);
 
-        var mediumBtn = document.createElement('div');
-        this.container.appendChild(mediumBtn);
-        mediumBtn.innerHTML = 'Medium';
-        mediumBtn.className = 'game-button';
+        var mediumBtn = div({innerHTML: 'Medium',appendChild: 'mediumBtn',className: 'game-button'}, this.container);
 
-        var highBtn = document.createElement('div');
-        this.container.appendChild(highBtn);
-        highBtn.innerHTML = 'High';
-        highBtn.className = 'game-button';
+        var highBtn = div({innerHTML: 'High',appendChild: 'highBtn',className: 'game-button'}, this.container);
 
         
         }
