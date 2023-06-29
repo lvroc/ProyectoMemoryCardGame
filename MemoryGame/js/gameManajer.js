@@ -6,8 +6,8 @@ import {CreditsController} from "./controllers/credits/creditsController.js";
 
 export class GameManager{
     constructor(){
-        let navigationContainer = document.getElementById('navigationContainer');
-        let contentContainer = document.getElementById('contentContainer');
+        this.navigationContainer = document.getElementById('navigationContainer');
+        this.contentContainer = document.getElementById('contentContainer');
         this.backBtn = document.getElementById('navigationContainer-back-button');
         this.title = document.getElementById('navigationContainer-title');
         this.goto(5);
