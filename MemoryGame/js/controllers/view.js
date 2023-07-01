@@ -7,4 +7,8 @@ export class View {
         this.container = div({},this.parent);
         
     }
+
+    delete(){
+        this.parent.removeChild(this.container);
+    }
 }
