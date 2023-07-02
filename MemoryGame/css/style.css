@@ -39,8 +39,8 @@ button:focus {
 
 
 .contentContainer{
-    background-color:#F4479F;
-    max-width: 580px;
+    background-color:white;
+    /* max-width: 580px; */
     width: 100%;
     height: calc(100% - var(--navigationContainer--height));
 }
@@ -66,7 +66,7 @@ button:focus {
 /*navigation container styles*/
 .navigationContainer{
     background-color: #C2C2FB;
-    max-width: 580px;/*si quiero quito esto*/
+    /* max-width: 580px; *//*si quiero quito esto*/
     width: 100%;
     height: var(--navigationContainer--height);
     display: flex;

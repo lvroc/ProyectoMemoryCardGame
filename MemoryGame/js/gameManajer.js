@@ -14,19 +14,21 @@ export class GameManager{
         this.contentContainer = document.getElementById('contentContainer');
         this.backBtn = document.getElementById('navigationContainer-back-button');
         this.title = document.getElementById('navigationContainer-title');
-        this.goto(HOME_STATE)
-        this.backBtn.onclick = this.goto.bind(this, HOME_STATE)
+        this.backBtn.onclick = this.goto.bind(this, HOME_STATE);
+        /* this.homecontroller = new HomeController(this, contentContainer); */
         
-
-        
+        this.presenting(HOME_STATE);
     }
-    goto(state){
-        if(this.controller != null){
+        
+    presenting(state){
+        console.log('presenting',state);
+        if (this.controller !== null) {
             this.controller.delete();
+            this.controller=null;
         }
         this.backBtn.classList.remove('hidden');
 
-        switch (state){
+        switch (state) {
             case HOME_STATE:
                 this.backBtn.classList.add('hidden')
                 this.title.innerHTML = 'Home'
@@ -43,11 +45,11 @@ export class GameManager{
             case LOGIN_STATE:
                 this.title.innerHTML = 'Login'
                 this.controller = new LoginController(this, contentContainer);
-            break;
+                break;
             case CREDITS_STATE:
                 this.title.innerHTML = 'Credits';
                 this.controller = new CreditsController(this, contentContainer);
-            break;
+                break;
             case PLAY_STATE:
                 this.title.innerHTML = 'Play';
                 this.controller = new PlayController(this, contentContainer);
@@ -55,9 +57,17 @@ export class GameManager{
 
             case SCORES_STATE:
                 this.title.innerHTML = 'Scores';
-            this.controller = new ScoresController(this, contentContainer);
-            break;
+                this.controller = new ScoresController(this, contentContainer);
+                break;
 
         }
     }
+    goto(state){
+        if(this.controller !== null){
+            this.controller.hide(this.presenting.bind(this,state));
+        }else{
+            this.presenting(state);
+        }
+    }
+        
 }

@@ -12,6 +12,8 @@ export class LoginView extends View{
             className: 'game-button'
         }, this.container);
 
+        
+
     
 
 
