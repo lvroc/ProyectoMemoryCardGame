@@ -85,16 +85,18 @@ button:focus {
     flex-direction: row;
 }
 
-.navigationContainer-back-button{
-    position: fixed;
-    font-size: 20px;
-    font-weight: bold;
+.navigationContainer-back-button, i{
+   /*  position: fixed; */
     color: white;
     margin-left: 20px;
     cursor: pointer;
-    user-select: none;
+    user-select: none; 
+    transition: white 0.3s ease;   
+}
     
 
+.navigationContainer-back-button,i:hover{
+    color:#CE0C6F
 }
 
 .navigationContainer-title{
