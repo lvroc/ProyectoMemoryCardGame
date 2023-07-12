@@ -1,3 +1,4 @@
+const {series}  = require('gulp');
 const gulp =require('gulp');
 const rollup = require('rollup');
 const clean = require('gulp-clean');
@@ -9,18 +10,40 @@ gulp.task('clean', ()=>{
     return gulp.src('node_modules').pipe(clean());
 });
 
+function reloadServer(){
+    server.reload();
+}
+
+
+function runServer(){
+    server.init({
+        server:{
+            baseDir:'.'
+        }
+    });
+}
+    
+
+
+function watchingFiles(){
+    gulp.watch('*.html',reloadServer);
+    gulp.watch('css/',{events:'all'},reloadServer);
+    gulp.watch('js/', {
+        events: 'all'
+    }, reloadServer);
+}
+
 exports.bundle = () => {
-    console.log('GULP - Running bundle function');
+    console.log('Running bundle function');
 }
 
 exports.play = () =>  {
-    console.log('running game...');
-    server.init({
-        server:{
-            baseDir: '.'
-        }
-    });
+    console.log('Running game...');
+    runServer();
+    watchingFiles();
 };
+
+/* exports.play = series(runServer,watchingFiles); */
 
 
 

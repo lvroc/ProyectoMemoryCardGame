@@ -18,6 +18,13 @@ export class GameManager{
         /* this.homecontroller = new HomeController(this, contentContainer); */
         
         this.presenting(HOME_STATE);
+
+        this.contentContainer.addEventListener('home-button-click', (event) => {
+            this.presenting(event.detail.state)
+        });
+        this.contentContainer.addEventListener('hide-complete',(event)=>{
+            this.presenting(event.detail.state);
+        });
     }
         
     presenting(state){
@@ -64,7 +71,7 @@ export class GameManager{
     }
     goto(state){
         if(this.controller !== null){
-            this.controller.hide(this.presenting.bind(this,state));
+            this.controller.hide(state);
         }else{
             this.presenting(state);
         }

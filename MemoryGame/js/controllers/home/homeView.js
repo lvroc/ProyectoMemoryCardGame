@@ -1,15 +1,30 @@
-import { View } from "../view.js";
-import {div } from "../../libs/html.js";
-import { CREDITS_STATE, DIFFICULTY_STATE, LOGIN_STATE, PLAY_STATE, SCORES_STATE, THEMES_STATE } from "../../libs/constants.js";
+import {
+    View
+} from "../view.js";
+import {
+    div
+} from "../../libs/html.js";
+import {
+    CREDITS_STATE,
+    DIFFICULTY_STATE,
+    LOGIN_STATE,
+    PLAY_STATE,
+    SCORES_STATE,
+    THEMES_STATE
+} from "../../libs/constants.js";
 
-export class HomeView extends View{
-    constructor(controller, parent){
-        super(controller,parent);
+export class HomeView extends View {
+    constructor(controller, parent) {
+        super(controller, parent);
         this.container.className = 'homeView';
 
-        var loginBtn = div({innerHTML: 'Login',className: 'game-button',onclick:this.onButtonClick.bind(this,LOGIN_STATE)}, this.container);
+        var loginBtn = div({
+            innerHTML: 'Login',
+            className: 'game-button',
+            onclick: this.onButtonClick.bind(this, LOGIN_STATE)
+        }, this.container);
         var playBtn = div({
-            innerHTML: 'Play',
+            innerHTML: 'play',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, PLAY_STATE)
         }, this.container);
@@ -35,16 +50,16 @@ export class HomeView extends View{
         }, this.container);
     }
 
-    onButtonClick(state,event){
-        this.controller.goto(state)
+    onButtonClick(state) {
+        /* this.controller.goto(state); */
+        let event = new CustomEvent('home-button-click',{
+            detail:{
+                state: state
+            },
+            bubbles: true,
+            cancelable: true,
+            composed:false,
+        });
+        this.container.dispatchEvent(event)
     }
 }
-
-
-
-
-
-
-
-
-

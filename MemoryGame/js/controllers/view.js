@@ -6,7 +6,7 @@ export class View {
         this.parent = parent;
         this.container = div({},this.parent);
         this.container.style.transform = `translateX(${window.innerWidth}px)`;
-        this.callback = null;
+        /* this.callback = null; */
         this.show();
         
     }
@@ -23,8 +23,8 @@ export class View {
         });
     }
 
-    hide(callback,state){
-        this.callback = callback;
+    hide(state){
+        /* this.callback = callback; */
         gsap.to(this.container, {
             x: window.innerWidth,
             duration: 0.75,
@@ -34,7 +34,16 @@ export class View {
         });
     }
     hideComplete(state) {
-        this.callback(state);
+        let event = new CustomEvent('hide-complete', {
+        detail: {
+            state: state,
+        },
+        bubbles: true,
+        cancelable: true,
+        composed: false,
+        });
+        /* this.callback(state); */
+        this.container.dispatchEvent(event);
     }
 }
 
