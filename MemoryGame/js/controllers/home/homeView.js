@@ -19,32 +19,32 @@ export class HomeView extends View {
         this.container.className = 'homeView';
 
         var loginBtn = div({
-            innerHTML: 'Login',
+            innerHTML: '<i class="fas fa-user"></i>Login',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, LOGIN_STATE)
         }, this.container);
         var playBtn = div({
-            innerHTML: 'play',
+            innerHTML: '<i class="fas fa-gamepad"></i>Play',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, PLAY_STATE)
         }, this.container);
         var scoresBtn = div({
-            innerHTML: 'Scores',
+            innerHTML: '<i class="fas fa-trophy"></i>Scores',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, SCORES_STATE)
         }, this.container);
         var difficultyBtn = div({
-            innerHTML: 'Difficulty',
+            innerHTML: '<i class="fas fa-cogs"></i>Difficulty',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, DIFFICULTY_STATE)
         }, this.container);
         var themesBtn = div({
-            innerHTML: 'Themes',
+            innerHTML: '<i class="fas fa-paint-brush"></i>Themes',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, THEMES_STATE)
         }, this.container);
         var creditsBtn = div({
-            innerHTML: 'Credits',
+            innerHTML: '<i class="fas fa-info-circle"></i>Credits',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, CREDITS_STATE)
         }, this.container);

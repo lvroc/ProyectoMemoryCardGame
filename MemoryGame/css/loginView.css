@@ -35,3 +35,11 @@ input:focus {
 input:hover {
     box-shadow: 0 0 10px gray;
 }
+
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .input_login{
+        width: 20%;
+    }
+}

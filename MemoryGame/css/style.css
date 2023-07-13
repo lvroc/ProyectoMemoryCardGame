@@ -3,7 +3,7 @@
     --secondary-color: #0C0ECE;
     --tertiary-color:#CE0C6F;
     --quaternary-color:#CECC0C ;
-    --background-color: #FDE0EF;
+    --background-color: #67cc14f8;
     --navigationContainer--height:60px;
 }
 
@@ -37,7 +37,7 @@ button:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--background-color);
+   /*  background-color: var(--background-color); */
     width: 100vw;
     height: 100vh;
 }
@@ -45,7 +45,7 @@ button:focus {
 
 
 .contentContainer{
-    background-color:white;
+    background-color: #FBC2DF;
     /* max-width: 580px; */
     width: 100%;
     height: calc(100% - var(--navigationContainer--height));
@@ -68,10 +68,16 @@ button:focus {
     cursor:pointer;
     user-select: none;
     transition: background-color 0.3s ease;
+    transition: transform 0.3s;
 }
 
 .game-button:hover {
     background-color: #069e4f;
+    transform: scale(1.1);
+}
+
+.game-button i  {
+    margin-right: 5px;
 }
 /*navigation container styles*/
 .navigationContainer{
@@ -85,7 +91,7 @@ button:focus {
     flex-direction: row;
 }
 
-.navigationContainer-back-button, i{
+.navigationContainer-back-button i{
    /*  position: fixed; */
     color: white;
     margin-left: 20px;
@@ -95,7 +101,7 @@ button:focus {
 }
     
 
-.navigationContainer-back-button,i:hover{
+.navigationContainer-back-button i:hover{
     color:#CE0C6F
 }
 
@@ -111,9 +117,9 @@ button:focus {
 }
 
 
-/* @media screen and (min-width: 768px) {
-    .mainContainer {
-        max-width: 800px;
+/* Media Queries */
+@media (min-width: 768px) {
+    .game-button{
+        width: 20%;
     }
-} */
-
+}
