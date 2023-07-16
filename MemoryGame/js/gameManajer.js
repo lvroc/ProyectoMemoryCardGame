@@ -5,10 +5,12 @@ import { LoginController } from "./controllers/login/loginController.js";
 import {CreditsController} from "./controllers/credits/creditsController.js";
 import {PlayController} from "./controllers/play/playController.js";
 import {ScoresController} from "./controllers/scores/scoresController.js";
-import {CREDITS_STATE, DIFFICULTY_STATE, HOME_STATE, LOGIN_STATE, PLAY_STATE, SCORES_STATE, THEMES_STATE } from "./libs/constants.js";
+import {CREDITS_STATE, DIFFICULTY_MEDIUM, DIFFICULTY_STATE, HOME_STATE, LOGIN_STATE, PLAY_STATE, SCORES_STATE, THEMES_STATE, THEME_FOOD} from "./libs/constants.js";
 
 export class GameManager{
     constructor(){
+        this.difficulty = DIFFICULTY_MEDIUM;
+        this.theme = THEME_FOOD;
         this.controller = null;
         this.navigationContainer = document.getElementById('navigationContainer');
         this.contentContainer = document.getElementById('contentContainer');
@@ -17,7 +19,7 @@ export class GameManager{
         this.backBtn.onclick = this.goto.bind(this, HOME_STATE);
         /* this.homecontroller = new HomeController(this, contentContainer); */
         
-        this.presenting(HOME_STATE);
+        this.presenting(PLAY_STATE);
 
         this.contentContainer.addEventListener('home-button-click', (event) => {
             this.presenting(event.detail.state)
@@ -25,6 +27,19 @@ export class GameManager{
         this.contentContainer.addEventListener('hide-complete',(event)=>{
             this.presenting(event.detail.state);
         });
+
+        this.contentContainer.addEventListener('save-difficulty',(event) =>{
+            this.difficulty = event.detail.difficulty;
+            this.saveDifficulty();
+        });
+
+        this.contentContainer.addEventListener('save-theme', (event) => {
+            this.theme = event.detail.theme;
+            this.saveTheme();
+
+        });
+
+        this.loadDifficulty();
     }
         
     presenting(state){
@@ -75,6 +90,27 @@ export class GameManager{
         }else{
             this.presenting(state);
         }
+    }
+
+    loadDifficulty(){
+        if(localStorage.getItem('difficulty')){
+            this.difficulty = localStorage.getItem('difficulty');
+        }
+    }
+
+    saveDifficulty(){
+        localStorage.setItem('difficulty',this.difficulty);
+    }
+
+
+    loadTheme() {
+        if (localStorage.getItem('theme')) {
+            this.theme = localStorage.getItem('theme');
+        }
+    }
+
+    saveTheme() {
+        localStorage.setItem('theme', this.theme);
     }
         
 }

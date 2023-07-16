@@ -1,14 +1,14 @@
 .loginView {
-
-    background-color: #CECC0C ;
     width: 100%;
     height: 100%;
-
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: #CECC0C ;
     gap: 27px;
+    overflow: scroll;
 }
 
 .pf_login{

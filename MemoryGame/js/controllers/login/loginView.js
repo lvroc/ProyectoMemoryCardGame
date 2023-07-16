@@ -4,7 +4,7 @@ import { View } from "../view.js";
 export class LoginView extends View{
     constructor(controller, parent){
         super(controller,parent);
-        this.container.className = 'loginView';
+        this.elementsContainer.className = 'loginView';
 
         
 
@@ -12,20 +12,20 @@ export class LoginView extends View{
             innerHTML: 'Enter your username to play',
             appendChild: 'pf_login',
             className: 'pf_login'
-        }, this.container);
+        }, this.elementsContainer);
 
         var input_login = input({
             innerHTML: 'Enter your username to play',
             appendChild: 'input_login',
             className: 'input_login',
             placeholder: 'Username'
-        }, this.container);
+        }, this.elementsContainer);
         
         var loginBtn = div({
             innerHTML: 'Login',
             appendChild: 'loginBtn',
             className: 'game-button'
-        }, this.container);
+        }, this.elementsContainer);
         
 
     
