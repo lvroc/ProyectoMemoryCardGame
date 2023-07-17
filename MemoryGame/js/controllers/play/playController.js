@@ -9,10 +9,21 @@ export class PlayController extends Controller{
         this.cards = null;
         this.service = new PlayService(this);
         this.service.getCards(this.gameManager.difficulty,this.gameManager.theme);
+        this.time = 0;
+        this.clicks=0;
+
     }
 
     showCards(cards){
         this.cards = cards;
         this.view.showCards(cards);
     }
+
+    resetGame(){
+        this.service.getCards(this.gameManager.difficulty, this.gameManager.theme);
+    }
+
+
+
+    
 }

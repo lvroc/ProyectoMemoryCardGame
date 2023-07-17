@@ -18,7 +18,8 @@ export class PlayView extends View{
         }, this.hudContainer);
         this.resetBtn = div({
             innerHTML: 'Reset',
-            className: 'game-button playView-resetBtn'
+            className: 'game-button playView-resetBtn',
+            onclick:this.onResetBtn.bind(this)
         }, this.hudContainer);
     }
     
@@ -28,6 +29,11 @@ export class PlayView extends View{
         cards.forEach(card => {
             div({innerHTML:card.icon,className:'card'},this.cardsContainer)
         });
+    }
+
+    onResetBtn(){
+        this.controller.resetGame();
+
     }
 }
 
