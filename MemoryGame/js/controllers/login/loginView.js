@@ -1,7 +1,7 @@
 import { div,p,input} from "../../libs/html.js";
-import { View } from "../view.js";
+import { ControllerView } from "../controllerView.js";
 
-export class LoginView extends View{
+export class LoginView extends ControllerView{
     constructor(controller, parent){
         super(controller,parent);
         this.elementsContainer.className = 'loginView';
