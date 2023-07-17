@@ -13,6 +13,8 @@ export class PlayController extends Controller{
         this.time = 0;
         this.clicks= 0;
 
+        this.view.container.addEventListener('card-selected',this.onCardSelected.bind(this));
+
     }
 
     showCards(cards){
@@ -33,6 +35,27 @@ export class PlayController extends Controller{
     gameTick(){
         this.time +=1;
         this.view.updateHUD(this.clicks,this.time);
+    }
+
+    onCardSelected(event){
+        console.log(this.cards);
+
+        this.cards.forEach(card => {
+            if(card.isSelected){
+
+            }
+        });
+
+        var showCardEvent = new CustomEvent('show-card', {
+            detail: {
+                card: null
+            },
+            bubbles: true,
+            cancelable: true,
+            composed: false,
+        });
+        this.view.container.dispatchEvent(showCardEvent)
+
     }
 
 

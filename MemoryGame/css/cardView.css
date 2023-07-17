@@ -1,4 +1,4 @@
-.card{
+.cardView{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +11,7 @@
     height: 100px;
 }
 
-.card-container{
+.cardView-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,14 +23,14 @@
 }
 
 
-.card-hidden{
+.cardView-hidden{
     background-color: blue;
 }
 
-.card-showing{
+.cardView-selected{
     background-color: brown;
 }
 
-.card-discovered{
+.cardView-discovered{
     background-color: chartreuse;
 }
