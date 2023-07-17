@@ -1,14 +1,38 @@
-import { HomeController } from "./controllers/home/homeController.js";
-import { DifficultyController } from "./controllers/difficulty/difficultyController.js";
-import { ThemesController} from "./controllers/themes/themeController.js"
-import { LoginController } from "./controllers/login/loginController.js";
-import {CreditsController} from "./controllers/credits/creditsController.js";
-import {PlayController} from "./controllers/play/playController.js";
-import {ScoresController} from "./controllers/scores/scoresController.js";
-import {CREDITS_STATE, DIFFICULTY_MEDIUM, DIFFICULTY_STATE, HOME_STATE, LOGIN_STATE, PLAY_STATE, SCORES_STATE, THEMES_STATE, THEME_FOOD} from "./libs/constants.js";
+import {
+    HomeController
+} from "./controllers/home/homeController.js";
+import {
+    DifficultyController
+} from "./controllers/difficulty/difficultyController.js";
+import {
+    ThemesController
+} from "./controllers/themes/themeController.js"
+import {
+    LoginController
+} from "./controllers/login/loginController.js";
+import {
+    CreditsController
+} from "./controllers/credits/creditsController.js";
+import {
+    PlayController
+} from "./controllers/play/playController.js";
+import {
+    ScoresController
+} from "./controllers/scores/scoresController.js";
+import {
+    CREDITS_STATE,
+    DIFFICULTY_MEDIUM,
+    DIFFICULTY_STATE,
+    HOME_STATE,
+    LOGIN_STATE,
+    PLAY_STATE,
+    SCORES_STATE,
+    THEMES_STATE,
+    THEME_FOOD
+} from "./libs/constants.js";
 
-export class GameManager{
-    constructor(){
+export class GameManager {
+    constructor() {
         this.difficulty = DIFFICULTY_MEDIUM;
         this.theme = THEME_FOOD;
         this.controller = null;
@@ -18,17 +42,16 @@ export class GameManager{
         this.title = document.getElementById('navigationContainer-title');
         this.backBtn.onclick = this.goto.bind(this, HOME_STATE);
         /* this.homecontroller = new HomeController(this, contentContainer); */
-        
-        this.presenting(PLAY_STATE);
+
 
         this.contentContainer.addEventListener('home-button-click', (event) => {
             this.presenting(event.detail.state)
         });
-        this.contentContainer.addEventListener('hide-complete',(event)=>{
+        this.contentContainer.addEventListener('hide-complete', (event) => {
             this.presenting(event.detail.state);
         });
 
-        this.contentContainer.addEventListener('save-difficulty',(event) =>{
+        this.contentContainer.addEventListener('save-difficulty', (event) => {
             this.difficulty = event.detail.difficulty;
             this.saveDifficulty();
         });
@@ -39,14 +62,25 @@ export class GameManager{
 
         });
 
+        this.contentContainer.addEventListener('username-entered', (event) => {
+            this.username = event.detail.username;
+            this.saveUsername();
+            this.goto(HOME_STATE);
+        })
+
         this.loadDifficulty();
+        this.loadTheme();
+        this.loadUsername();
+
+
+        this.presenting(HOME_STATE);
     }
-        
-    presenting(state){
-        console.log('presenting',state);
+
+    presenting(state) {
+        console.log('presenting', state);
         if (this.controller !== null) {
             this.controller.delete();
-            this.controller=null;
+            this.controller = null;
         }
         this.backBtn.classList.remove('hidden');
 
@@ -84,22 +118,22 @@ export class GameManager{
 
         }
     }
-    goto(state){
-        if(this.controller !== null){
+    goto(state) {
+        if (this.controller !== null) {
             this.controller.hide(state);
-        }else{
+        } else {
             this.presenting(state);
         }
     }
 
-    loadDifficulty(){
-        if(localStorage.getItem('difficulty')){
+    loadDifficulty() {
+        if (localStorage.getItem('difficulty')) {
             this.difficulty = localStorage.getItem('difficulty');
         }
     }
 
-    saveDifficulty(){
-        localStorage.setItem('difficulty',this.difficulty);
+    saveDifficulty() {
+        localStorage.setItem('difficulty', this.difficulty);
     }
 
 
@@ -112,5 +146,16 @@ export class GameManager{
     saveTheme() {
         localStorage.setItem('theme', this.theme);
     }
-        
+
+    saveUsername() {
+        localStorage.setItem('username', this.username);
+    }
+
+    loadUsername() {
+        if (localStorage.getItem('username')) {
+            this.username = localStorage.getItem('username');
+            console.log('USERNAME:',this.username)
+        }
+    }
+
 }

@@ -11,10 +11,43 @@
 }
 
 .playView-cardsContainer{
+    width: 60%;
+
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
     
+.playView-hudContainer{
+    width: 80%;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+
+.playView-resetBtn{
+    height: 25px;
+    width: 130px;
+}
+    
+    
+.playView-text{
+    font-size: 20px;
+    height: 25px;
+    width: 130px;
+}
+
+
+/* Media Queries */
+@media (max-width: 488px) {
+    .playView-hudContainer{
+        flex-direction: column;
+         justify-content: center;
+         text-align: center;
+    }
+}

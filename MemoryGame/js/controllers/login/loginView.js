@@ -8,29 +8,46 @@ export class LoginView extends View{
 
         
 
-        var pf_login = p({
+        this.pf_login = p({
             innerHTML: 'Enter your username to play',
             appendChild: 'pf_login',
             className: 'pf_login'
         }, this.elementsContainer);
 
-        var input_login = input({
+        this.usernameInput = input({
             innerHTML: 'Enter your username to play',
             appendChild: 'input_login',
             className: 'input_login',
             placeholder: 'Username'
         }, this.elementsContainer);
         
-        var loginBtn = div({
+        this.loginBtn = div({
             innerHTML: 'Login',
             appendChild: 'loginBtn',
-            className: 'game-button'
+            className: 'game-button',
+            onclick:this.onLoginBtn.bind(this)
         }, this.elementsContainer);
+    }
+    onLoginBtn(){
+        let username =  this.usernameInput.value;
+        if(username!==''){
+            let event = new CustomEvent('username-entered',{
+                detail:{
+                    username:username,
+                },
+                bubbles:true,
+                cancelable:true,
+                composed: false
+            });
+            this.container.dispatchEvent(event);
+
+        }else{
+
+        }
+    }
+}
         
 
     
 
 
-
-        }
-    }
