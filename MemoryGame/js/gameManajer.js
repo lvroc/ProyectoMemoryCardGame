@@ -35,6 +35,7 @@ export class GameManager {
     constructor() {
         this.difficulty = DIFFICULTY_MEDIUM;
         this.theme = THEME_FOOD;
+        this.username = '';
         this.controller = null;
         this.navigationContainer = document.getElementById('navigationContainer');
         this.contentContainer = document.getElementById('contentContainer');
