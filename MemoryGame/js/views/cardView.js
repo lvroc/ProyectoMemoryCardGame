@@ -1,7 +1,11 @@
-import { div } from "../libs/html.js";
-import { View } from "./view.js";
-export class CardView extends View{
-    constructor(parent, card){
+import {
+    div
+} from "../libs/html.js";
+import {
+    View
+} from "./view.js";
+export class CardView extends View {
+    constructor(parent, card) {
         super(parent);
         this.card = card;
         this.container.className = 'cardView-container';
@@ -12,15 +16,25 @@ export class CardView extends View{
         }, this.container);
 
         this.container.onclick = this.onSelected.bind(this);
-        
-        window.addEventListener('show-card-on-selected',(event)=>{
+        /*  this.container.addEventListener('click', this.onSelected.bind(this)); */
+
+        window.addEventListener('show-card-on-selected', (event) => {
             this.showOnSelected();
-        })
+        });
+        window.addEventListener('show-card-on-discovered', (event) => {
+            this.showOnDiscovered();
+        });
+
+        window.addEventListener('hide-selected-card', (event) => {
+            this.hide();
+        });
+
+      /*   this.iconContainer.innerHTML = this.card.icon; */
+
     }
-    onSelected(){
+    onSelected() {
         this.card.isSelected = true;
-        console.log(this.card);
-        
+
 
 
         let event = new CustomEvent('card-selected', {
@@ -32,13 +46,37 @@ export class CardView extends View{
             composed: false,
         });
         this.container.dispatchEvent(event)
-        }
+    }
 
-        showOnSelected(){
-            if(this.card.isSelected){
-                this.iconContainer.innerHTML = this.card.icon;
-                this.iconContainer.classList.remove('cardView-hidden');
-                this.iconContainer.classList.remove('cardView-selected');
-            }
+    showOnSelected() {
+        if (this.card.isSelected) {
+            this.iconContainer.innerHTML = this.card.icon;
+            this.iconContainer.classList.remove('cardView-hidden');
+            this.iconContainer.classList.add('cardView-selected');
         }
     }
+
+
+
+    showOnDiscovered() {
+        if (this.card.isSelected && !this.card.isDiscovered) {
+            this.card.isDiscovered = true;
+            this.iconContainer.classList.remove('cardView-hidden');
+            this.iconContainer.classList.remove('cardView-selected');
+            this.iconContainer.classList.add('cardView-discovered');
+            this.container.onClick = null;
+
+        }
+    }
+
+
+    hide(){
+        if (this.card.isSelected && !this.card.isDiscovered) {
+            this.card.isSelected = false;
+            this.iconContainer.innerHTML = '';
+            this.iconContainer.classList.add('cardView-hidden');
+            this.iconContainer.classList.remove('cardView-selected');
+        }
+
+    }
+}
