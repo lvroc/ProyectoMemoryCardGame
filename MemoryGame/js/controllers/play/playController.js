@@ -13,7 +13,10 @@ export class PlayController extends Controller{
         this.time = 0;
         this.clicks= 0;
 
-        this.view.container.addEventListener('card-selected',this.onCardSelected.bind(this));
+     /*    this.view.container.addEventListener('card-selected',this.onCardSelected.bind(this)); */
+     window.addEventListener('card-selected',(event)=>{
+        this.onCardSelected();
+     })
 
     }
 
@@ -37,24 +40,17 @@ export class PlayController extends Controller{
         this.view.updateHUD(this.clicks,this.time);
     }
 
-    onCardSelected(event){
-        console.log(this.cards);
+    onCardSelected(){
 
-        this.cards.forEach(card => {
-            if(card.isSelected){
-
-            }
-        });
-
-        var showCardEvent = new CustomEvent('show-card', {
+        var event = new CustomEvent('show-card-on-selected', {
             detail: {
-                card: null
+                test: 9
             },
             bubbles: true,
             cancelable: true,
             composed: false,
         });
-        this.view.container.dispatchEvent(showCardEvent)
+        this.view.container.dispatchEvent(event)
 
     }
 

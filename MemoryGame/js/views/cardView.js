@@ -13,7 +13,9 @@ export class CardView extends View{
 
         this.container.onclick = this.onSelected.bind(this);
         
-        this.container.addEventListener('show-card',this.showOnSelected.bind(this));
+        window.addEventListener('show-card-on-selected',(event)=>{
+            this.showOnSelected();
+        })
     }
     onSelected(){
         this.card.isSelected = true;
