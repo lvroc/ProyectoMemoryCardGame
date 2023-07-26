@@ -8,13 +8,15 @@
     --fade-color:rgb(0, 0, 0, 1);
 }
 
-* {padding:0; margin:0; font-family: 'Sigmar', cursive; color:#2E2E2E;innerHTML:'',className:''}
+* {padding:0; margin:0; font-family: 'Sigmar', cursive; color:#2E2E2E}
 h1 {color:var(--primary-color)}
 h2 {color:var(--secondary-color)}
 
-/* body{
-    background-color: var(--tertiary-color);
-} */
+hr{
+    width: 50%;  
+    border-color: indigo;
+    margin-bottom: 20px;
+}
 
 
 button{

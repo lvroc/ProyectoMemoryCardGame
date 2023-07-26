@@ -7,7 +7,10 @@ export const p = function (attributes, parent) {
 }
 
 export const input = function (attributes, parent) {
-    return createElement('input', attributes, parent)
+    return createElement('input', attributes, parent);
+}
+export const hr = function (attributes, parent) {
+    return createElement('hr', attributes, parent);
 }
 
 export const createElement = function(type, attributes, parent){
@@ -18,3 +21,5 @@ export const createElement = function(type, attributes, parent){
     }
     return element;
 }
+
+
