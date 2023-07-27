@@ -33,6 +33,7 @@ export class PlayService extends Service {
     sendScore(score, clicks, time, username) {
         console.log(`SCORE: ${score}, CLICKS: ${clicks}, TIME: ${time}, USERNAME: ${username}`);
         var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/scores`;
+        var request = new XMLHttpRequest();
         request.open('post', url);
         request.send(JSON.stringify({
             score: score,
