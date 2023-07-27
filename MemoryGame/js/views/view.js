@@ -1,8 +1,8 @@
 import { div } from "../libs/html.js";
 
-export class View{
+export class View {
     constructor(parent) {
-            this.parent = parent;
-            this.container = div({},this.parent);
-        }
+        this.parent = parent;
+        this.container = div({}, this.parent);
+    }
 }

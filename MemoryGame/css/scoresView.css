@@ -1,6 +1,6 @@
 .scoresView {
     width: 100%;
-    height: calc(100%-var(--navigationContainer--height));
+    height: calc(100% - var(--navigationContainer--height));
     position: fixed;
     display: flex;
     align-items: center;

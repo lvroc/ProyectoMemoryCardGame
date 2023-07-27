@@ -29,7 +29,7 @@ export class CardView extends View {
             this.hide();
         });
 
-      /*   this.iconContainer.innerHTML = this.card.icon; */
+        /*   this.iconContainer.innerHTML = this.card.icon; */
 
     }
     onSelected() {
@@ -70,7 +70,7 @@ export class CardView extends View {
     }
 
 
-    hide(){
+    hide() {
         if (this.card.isSelected && !this.card.isDiscovered) {
             this.card.isSelected = false;
             this.iconContainer.innerHTML = '';
