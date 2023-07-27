@@ -4,10 +4,9 @@
     position: fixed; 
     display: flex;
     align-items: center;
-   /*  justify-content: center; */
+    justify-content: center;
     flex-direction: column;
     background-color: #8486F8;
-    padding-bottom: 15px;
     overflow: scroll;
 }
 
@@ -48,7 +47,7 @@
 @media (max-width: 488px) {
     .playView-hudContainer{
         flex-direction: column;
-         justify-content: center;
-         text-align: center;
+        justify-content: center;
+        text-align: center;
     }
 }
