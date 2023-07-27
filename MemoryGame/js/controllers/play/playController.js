@@ -83,7 +83,7 @@ export class PlayController extends Controller {
                 this.view.container.dispatchEvent(event);
                 if (this.checkGameComplete()) {
                     this.killGameTimer();
-                    let score = this.time/this.clicks;
+                    let score = this.time+this.clicks;
                     this.service.sendScore(score,this.clicks,this.time,this.gameManager.username);
                     //todo: show game completed controller?
                 }
