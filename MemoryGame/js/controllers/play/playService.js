@@ -1,5 +1,9 @@
-import { Card } from "../models/card.js";
-import { Service } from "../service.js";
+import {
+    Card
+} from "../models/card.js";
+import {
+    Service
+} from "../service.js";
 
 export class PlayService extends Service {
     constructor(controller) {
@@ -28,8 +32,13 @@ export class PlayService extends Service {
     }
     sendScore(score, clicks, time, username) {
         console.log(`SCORE: ${score}, CLICKS: ${clicks}, TIME: ${time}, USERNAME: ${username}`);
-        /*  var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/scores`;
-         request.open('POST',url);
-         request.send(JSON.stringify({score:score ,clicks:clicks ,time:time ,username:username})); */
+        var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/scores`;
+        request.open('post', url);
+        request.send(JSON.stringify({
+            score: score,
+            clicks: clicks,
+            time: time,
+            username: username
+        }));
     }
 }
