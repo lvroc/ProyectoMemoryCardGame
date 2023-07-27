@@ -4,12 +4,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 80%;
-    background-color: #FAA3CF;
+    width: 30%;
+    background-color: #0C0ECE;
     margin-top: 10px;
     border-radius: 5px;
     border-width: 2px;
-    border-color: #ED0E80;
+    border-color: #C2C2FB;
     border-style: solid;
 
 
@@ -20,12 +20,13 @@
     justify-content: center;
     align-items: center;
     height: 60px;
-    color: white;
     font-size: 30px;
-    background-color: #FBC2DF;
+    background-color: #6667F6;
     width: 100%;
-
-    border-bottom: 2px #ED0E80 solid;
+    border-bottom: 2px #C2C2FB solid;
+}
+.scoreView-nameContainer p{
+    color:#C2C2FB;
 }
 
 
@@ -48,11 +49,27 @@
 }
 
 .scoreView-value-title{
-    color: white;
+    color: #C2C2FB;
     font-size: 15px;
 }
 
 .scoreView-value-description{
-    color: green;
+    color: #A3A4FA;
     font-size: 40px;  
+}
+
+
+@media (max-width: 712px) {
+    .scoreView{
+        width: 90%;
+    }
+  /*   .scoreView-nameContainer{
+        font-size: 20px;
+    }
+    .scoreView-value-title{
+    font-size: 12px;
+    }
+    .scoreView-value-description{
+    font-size: 20px;
+    } */
 }

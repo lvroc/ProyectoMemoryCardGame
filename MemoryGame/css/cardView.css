@@ -3,12 +3,13 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 30px;
-    border-color:red;
-    border-width: 2px;
+    font-size: 25px;
+    border-color: white;
+   /*  border-width: 2px; */
+    border-radius: 10px;
     border-style: solid;
-    width: 80px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
     
 }
 
@@ -17,8 +18,8 @@
     align-items: center;
     justify-content: center;
     background-color:purple;
-    width: 100px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     margin-top: 10px;
     border-radius: 10px;
 
@@ -26,13 +27,13 @@
 
 
 .cardView-hidden{
-    background-color: blue;
+    background-color: #282AF2;
 }
 
 .cardView-selected{
-    background-color: brown;
+    background-color: #F666AF;
 }
 
 .cardView-discovered{
-    background-color: chartreuse;
+    background-color: #0CCE6B;
 }
