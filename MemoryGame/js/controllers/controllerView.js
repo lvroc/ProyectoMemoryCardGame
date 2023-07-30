@@ -19,14 +19,14 @@ export class ControllerView extends View {
     }
 
     show() {
-        gsap.to(this.fadeContainer, { opacity: 0.75, duration: 0.25, ease: "expo.out" });
-        gsap.to(this.elementsContainer, { x: 0, duration: 0.75, ease: "expo.out" });
+        gsap.to(this.fadeContainer, { opacity: 0.40, duration: 0.25, ease: "expo.out" });
+        gsap.to(this.elementsContainer, { x: 0, duration: 1, ease: "expo.out" });
     }
 
     hide(state) {
         /* this.callback = callback; */
         gsap.to(this.fadeContainer, { opacity: 0, duration: 0.75, ease: "expo.in", onComplete: this.hideComplete.bind(this, state) });
-        gsap.to(this.elementsContainer, { x: window.innerWidth, duration: 0.5, ease: "expo.in" });
+        gsap.to(this.elementsContainer, { x: window.innerWidth, duration: 0.5, ease: "expo.in"});
     }
 
     hideComplete(state) {

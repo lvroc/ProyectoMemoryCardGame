@@ -42,7 +42,7 @@ export class GameManager {
         this.backBtn = document.getElementById('navigationContainer-back-button');
         this.title = document.getElementById('navigationContainer-title');
         this.backBtn.onclick = this.goto.bind(this, HOME_STATE);
-        /* this.homecontroller = new HomeController(this, contentContainer); */
+        this.homecontroller = new HomeController(this, contentContainer);
 
 
         this.contentContainer.addEventListener('home-button-click', (event) => {
@@ -89,7 +89,7 @@ export class GameManager {
             case HOME_STATE:
                 this.backBtn.classList.add('hidden')
                 this.title.innerHTML = 'Home'
-                this.controller = new HomeController(this, contentContainer);
+               /*  this.controller = new HomeController(this, contentContainer); */
                 break;
             case DIFFICULTY_STATE:
                 this.title.innerHTML = 'Difficulty'
