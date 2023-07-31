@@ -11,12 +11,14 @@
 }
 
 .playView-cardsContainer{
+    padding-top: 10%;
+    padding-bottom: 5%;
     width: 80%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+
 }
     
 .playView-hudContainer{
@@ -51,3 +53,19 @@
         text-align: center;
     }
 }
+
+
+@media (max-width: 390px) {
+    .playView-elementsContainer{
+        justify-content: unset;
+    } 
+}
+
+@media (max-width: 789px) {
+    .playView-elementsContainer{
+        justify-content: unset;
+        padding-top: 5%;
+        margin-bottom: 0%;
+    } 
+}
+

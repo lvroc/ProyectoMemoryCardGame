@@ -2,25 +2,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 25px;
+    font-size:xx-large;
     border-color: white;
-   /*  border-width: 2px; */
     border-radius: 10px;
     border-style: solid;
-    width: 85px;
-    height: 85px;
-    
+    width: 100%;
+    height: 91px;
 }
 
 .cardView-container{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:purple;
-    width: 90px;
-    height: 90px;
-    margin-top: 10px;
+    width: calc((100% - 70px) / 8);
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
     border-radius: 10px;
 
 }
@@ -36,4 +32,37 @@
 
 .cardView-discovered{
     background-color: #0CCE6B;
+}
+
+
+/* Media Queries */
+@media (max-width: 788px) {
+  .cardView-container{
+    width: calc((100% - 30px) / 4);
+  }
+  .cardView{
+    font-size: larger;
+  }
+ 
+}
+@media (max-width: 1019px) {
+ 
+  .cardView{
+    font-size:x-large;
+  }
+ 
+}
+
+@media (max-width: 356px) {
+ 
+  .cardView{
+    font-size:small;
+  }
+ 
+}
+
+@media (max-width: 479px) {
+    .cardView {
+        height: 67.5px;
+    }
 }

@@ -63,7 +63,7 @@
     .scoreView{
         width: 90%;
     }
-  /*   .scoreView-nameContainer{
+    .scoreView-nameContainer{
         font-size: 20px;
     }
     .scoreView-value-title{
@@ -71,5 +71,7 @@
     }
     .scoreView-value-description{
     font-size: 20px;
-    } */
+    }
 }
+
+
