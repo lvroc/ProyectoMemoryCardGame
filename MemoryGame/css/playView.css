@@ -11,7 +11,7 @@
 }
 
 .playView-cardsContainer{
-    padding-top: 10%;
+    padding-top: 3%;
     padding-bottom: 5%;
     width: 80%;
     display: flex;
@@ -51,6 +51,9 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
+    }
+    .playView-cardsContainer{
+        padding-top: 5%;
     }
 }
 
