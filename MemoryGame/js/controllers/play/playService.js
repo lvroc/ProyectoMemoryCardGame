@@ -12,8 +12,8 @@ export class PlayService extends Service {
 
     getCards(difficulty, theme) {
         let cards = [];
-        var url = '../../data/cards.json';
-        var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/cards/${difficulty}/type/${theme}`
+        let url = `http://localhost:3000/cards/${difficulty}/${theme}`
+        /* var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/cards/${difficulty}/type/${theme}` */
         var request = new XMLHttpRequest();
         request.open('get', url);
         request.onload = () => {

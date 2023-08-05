@@ -1,4 +1,4 @@
-import { THEME_FACES, THEME_FLAGS, THEME_FOOD } from "../../libs/constants.js";
+import { THEME_FACES, THEME_FLAGS, THEME_FOOD, THEME_VEHICLES } from "../../libs/constants.js";
 import { div } from "../../libs/html.js";
 import { ControllerView } from "../controllerView.js";
 
@@ -22,9 +22,16 @@ export class ThemesView extends ControllerView{
 
         var flagsBtn = div({
             appendChild: 'flagsBtn',
-            innerHTML: 'Flags',
+            innerHTML: 'Animals',
             className: 'game-button',
             onclick: this.onButtonClick.bind(this, THEME_FLAGS)
+        }, this.elementsContainer);
+
+        var vehiclesBtn = div({
+            appendChild: 'vehiclesBtn',
+            innerHTML: 'Vehicles',
+            className: 'game-button',
+            onclick: this.onButtonClick.bind(this, THEME_VEHICLES)
         }, this.elementsContainer);
     }
     onButtonClick(theme) {
