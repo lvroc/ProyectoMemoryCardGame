@@ -4,7 +4,8 @@
   "description": "game backend",
   "main": "index.js",
   "scripts": {
-    "run":"node index.js"
+    "run":"node index.js",
+    "vercelDev": "vercel dev"
   },
   "author": "alvaro castillo gonzalez",
   "license": "ISC",
