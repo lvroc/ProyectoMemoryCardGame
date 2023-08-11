@@ -58,7 +58,7 @@
 }
 
 
-@media (max-width: 390px) {
+@media (max-width: 480px) {
     .playView-elementsContainer{
         justify-content: unset;
         padding-top: 20px;
