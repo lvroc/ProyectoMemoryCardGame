@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = 3001;
 app.use(cors());
 const food = ['🥝','🍅','🥑','🍆','🥒','🥦','🌽','🥕','🥗','🥔','🍠','🥜','🍯','🍞','🥐','🥖','🥨','🥞','🧀','🍗','🍖','🥩','🍤','🥚','🍳','🥓','🍔','🍟','🌭','🍕','🍝','🥪','🥙','🌮','🌯','🍜','🥘','🍲','🥫','🍥','🍣','🍱','🍛','🍙','🍚','🍘','🥟','🍢','🍡','🍧','🍨','🍦','🍰','🎂','🥧','🍮','🍭','🍬','🍫','🍿','🍩','🍪','🥠','☕','🍵','🥣','🍼','🥤','🥛','🍺','🍻','🍷','🥂','🥃','🍸','🍹','🍾','🥡'];
 
@@ -42,9 +42,9 @@ app.get('/scores', (request, response) => {
 
 
 
-app.listen(port, () =>{
+/* app.listen(port, () =>{
     console.log(`App is listening on port ${port}`)
-});
+}); */
 
 function randomInteger(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -96,6 +96,13 @@ function shuffleArray(array){
         [array[i],array[j]] = [array[j],array[i]];
     }
 }
+
+app.get("/", (req, res) => {
+    res.send("Api Funcionado");
+});
+
+
+module.exports = app
 
 
 
