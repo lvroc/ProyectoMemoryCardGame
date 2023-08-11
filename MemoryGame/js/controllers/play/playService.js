@@ -12,7 +12,7 @@ export class PlayService extends Service {
 
     getCards(difficulty, theme) {
         let cards = [];
-        let url = `https://game-backend-virid.vercel.app/cards/${difficulty}/${theme}`
+        let url = `https://flip-and-match-game.vercel.app/cards/${difficulty}/${theme}`
         /* let url = `http://localhost:3000/cards/${difficulty}/${theme}` */
         /* var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/cards/${difficulty}/type/${theme}` */
         var request = new XMLHttpRequest();

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "run":"node index.js",
-    "vercelDev": "vercel dev"
+    "vercelDev": "vercel dev",
+    "vercelProd": "vercel --prod"
   },
   "author": "alvaro castillo gonzalez",
   "license": "ISC",
