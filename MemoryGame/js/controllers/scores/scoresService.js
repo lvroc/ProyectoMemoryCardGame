@@ -8,17 +8,18 @@ export class ScoresService extends Service {
 
     getScores() {
         let scores = [];
-        var url = `https://flip-and-match-game.vercel.app/score`
-       /*  var url = `https://flip-and-match-game-default-rtdb.firebaseio.com/app/scores` */
+        var url = `https://flip-and-match-game.vercel.app/scores`
+     // var url = 'http://localhost:3000/scores'
         var request = new XMLHttpRequest();
         request.open('get', url);
         request.onload = () => {
             if (request.status === 200) {
                 var data = JSON.parse(request.response);
-                data.forEach(scoreData => {
-                    let score = new Score(scoreData.clicks, scoreData.score, scoreData.time, scoreData.username);
-                    scores.push(score)
-                });
+                for (const key in data){
+                    const scoreData = data[key];
+                    let score = new Score(scoreData.clicks,scoreData.score,scoreData.time,scoreData.username);
+                    scores.push(score);
+                }
             } else {
                 console.error('Error requesting scores');
             }
