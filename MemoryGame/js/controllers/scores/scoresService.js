@@ -8,7 +8,8 @@ export class ScoresService extends Service {
 
     getScores() {
         let scores = [];
-        var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/scores`
+        var url = `https://flip-and-match-game.vercel.app/scores`
+       /*  var url = `https://flip-and-match-game-default-rtdb.firebaseio.com/app/scores` */
         var request = new XMLHttpRequest();
         request.open('get', url);
         request.onload = () => {
