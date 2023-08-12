@@ -7,7 +7,7 @@
     "play": "gulp play",
     "bundle":"gulp bundle",
     "clean": "gulp clean",
-    "firebaseDeploy": "firebase deploy"
+    "deploy": "gulp deploy"
   },
   "author": "alvaro castillo gonzalez",
   "license": "ISC",

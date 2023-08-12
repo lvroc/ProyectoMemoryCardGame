@@ -4,6 +4,7 @@ const rollup = require('rollup');
 const clean = require('gulp-clean');
 
 const browsersync = require('browser-sync');
+var exec = require('child_process').exec;
 const server = browsersync.create();
 
 gulp.task('clean', ()=>{
@@ -21,6 +22,12 @@ function runServer(){
             baseDir:'.'
         }
     });
+}
+function firebase(cb){
+    exec('firebase deploy', function (err,stdout,stderr){
+        console.log(stdout);
+        console.log(stderr);
+    })
 }
     
 
@@ -41,6 +48,12 @@ exports.play = () =>  {
     console.log('Running game...');
     runServer();
     watchingFiles();
+};
+
+//to deploy game to firebase run gulp deploy
+
+exports.deploy = () =>{
+    firebase();
 };
 
 /* exports.play = series(runServer,watchingFiles); */
