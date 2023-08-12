@@ -1,71 +1,116 @@
+const axios = require('axios');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3001;
+const port = 3000;
+
 app.use(cors());
 
-const dbUrl = 'https://flip-and-match-game-default-rtdb.firebaseio.com/';
+const dataBaseURL = 'https://flip-and-match-game-default-rtdb.firebaseio.com/';
 
-const food = ['🥝','🍅','🥑','🍆','🥒','🥦','🌽','🥕','🥗','🥔','🍠','🥜','🍯','🍞','🥐','🥖','🥨','🥞','🧀','🍗','🍖','🥩','🍤','🥚','🍳','🥓','🍔','🍟','🌭','🍕','🍝','🥪','🥙','🌮','🌯','🍜','🥘','🍲','🥫','🍥','🍣','🍱','🍛','🍙','🍚','🍘','🥟','🍢','🍡','🍧','🍨','🍦','🍰','🎂','🥧','🍮','🍭','🍬','🍫','🍿','🍩','🍪','🥠','☕','🍵','🥣','🍼','🥤','🥛','🍺','🍻','🍷','🥂','🥃','🍸','🍹','🍾','🥡'];
+const food = ['🥝', '🍅', '🥑', '🍆', '🥒', '🥦', '🌽', '🥕', '🥗', '🥔', '🍠', '🥜', '🍯', '🍞', '🥐', '🥖', '🥨', '🥞', '🧀', '🍗', '🍖', '🥩', '🍤', '🥚', '🍳', '🥓', '🍔', '🍟', '🌭', '🍕', '🍝', '🥪', '🥙', '🌮', '🌯', '🍜', '🥘', '🍲', '🥫', '🍥', '🍣', '🍱', '🍛', '🍙', '🍚', '🍘', '🥟', '🍢', '🍡', '🍧', '🍨', '🍦', '🍰', '🎂', '🥧', '🍮', '🍭', '🍬', '🍫', '🍿', '🍩', '🍪', '🥠', '☕', '🍵', '🥣', '🍼', '🥤', '🥛', '🍺', '🍻', '🍷', '🥂', '🥃', '🍸', '🍹', '🍾', '🥡'];
 
-const animals = ['🐶', '🐱', '🐭', '🐹', '🐰', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸 🐵', '🙈', '🙉', '🙊', '🐒', '🦍', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🐺', '🦊','🐗', '🐴', '🦓', '🦒', '🦌', '🦄', '🐝', '🐛', '🦋', '🐌', '🐞', '🐜', '🦗','🦂', '🐢', '🐍', '🦎', '🦀', '🦑', '🐙', '🦐', '🐠', '🐟', '🐡', '🐬', '🦈', '🐳', '🐋', '🐊', '🐆', '🐅', '🐃', '🐂', '🐄', '🐪', '🐫', '🐘', '🦏', '🐐', '🐏', '🐑', '🐎', '🐖', ' 🦇', '🐓', '🦃', '🦅', '🦆', '🦉', '🐕', '🐩', '🐈', '🐇', '🐀', '🐁', '🦔', '🐉', '🐲', ' 🦕', '🦖'];
+const animals = ['🐶', '🐱', '🐭', '🐹', '🐰', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸 🐵', '🙈', '🙉', '🙊', '🐒', '🦍', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🐺', '🦊', '🐗', '🐴', '🦓', '🦒', '🦌', '🦄', '🐝', '🐛', '🦋', '🐌', '🐞', '🐜', '🦗', '🦂', '🐢', '🐍', '🦎', '🦀', '🦑', '🐙', '🦐', '🐠', '🐟', '🐡', '🐬', '🦈', '🐳', '🐋', '🐊', '🐆', '🐅', '🐃', '🐂', '🐄', '🐪', '🐫', '🐘', '🦏', '🐐', '🐏', '🐑', '🐎', '🐖', ' 🦇', '🐓', '🦃', '🦅', '🦆', '🦉', '🐕', '🐩', '🐈', '🐇', '🐀', '🐁', '🦔', '🐉', '🐲', ' 🦕', '🦖'];
 
-const faces = ['😀', '😬', '😁', '😂', '😃', '😄', '🤣', '😅', '😆', '😇', '😉', '😊', '🙂', '🙃', '😋', '😌', '😍', '😘', '😗', '😙', '😚', '🤪', '😜', '😝', '😛', '🤑', '😎', '🤓', '🧐', '🤠', '🤗', '🤡', '😏', '😶', '😐', '😑', '😒', '🙄', '🤨', '🤔', '🤫', '🤭', '🤥', '😳', '😞', '😟', '😠', '😡', '🤬', '😔', '😕', '🙁','😣', '😖', '😫', '😩', '😤', '😮', '😱', '😨', '😰', '😯', '😦', '😧', '😢', '😥', '😪', '🤤', '😓', '😭', '🤩', '😵', '😲', '🤯', '🤐', '😷', '🤕', '🤒', '🤮', '🤢', '🤧', '😴', '😈', '👿', '👹', '👺', '💩', '👻', '💀', '👽', '🤖', '🎃', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'];
+const faces = ['😀', '😬', '😁', '😂', '😃', '😄', '🤣', '😅', '😆', '😇', '😉', '😊', '🙂', '🙃', '😋', '😌', '😍', '😘', '😗', '😙', '😚', '🤪', '😜', '😝', '😛', '🤑', '😎', '🤓', '🧐', '🤠', '🤗', '🤡', '😏', '😶', '😐', '😑', '😒', '🙄', '🤨', '🤔', '🤫', '🤭', '🤥', '😳', '😞', '😟', '😠', '😡', '🤬', '😔', '😕', '🙁', '😣', '😖', '😫', '😩', '😤', '😮', '😱', '😨', '😰', '😯', '😦', '😧', '😢', '😥', '😪', '🤤', '😓', '😭', '🤩', '😵', '😲', '🤯', '🤐', '😷', '🤕', '🤒', '🤮', '🤢', '🤧', '😴', '😈', '👿', '👹', '👺', '💩', '👻', '💀', '👽', '🤖', '🎃', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾'];
 
-const vehicles = ['🚗', '🚕', '🚙', '🚌', '🚎', '🚓', '🚑', '🚒', '🚐', '🚚', '🚛', '🚜','🛵', '🚲', '🛴', '🚨', '🚔', '🚍', '🚘', '🚖', '🚡', '🚠', '🚟', '🚃', '🚋', '🚝', '🚄', '🚅', '🚈', '🚞', '🚂', '🚆', '🚇', '🚊', '🚉', '🚁','🛫', '🛬', '🛶', '⛵', '🚤', '🚀', '🛸','🚢'];
+const vehicles = ['🚗', '🚕', '🚙', '🚌', '🚎', '🚓', '🚑', '🚒', '🚐', '🚚', '🚛', '🚜', '🛵', '🚲', '🛴', '🚨', '🚔', '🚍', '🚘', '🚖', '🚡', '🚠', '🚟', '🚃', '🚋', '🚝', '🚄', '🚅', '🚈', '🚞', '🚂', '🚆', '🚇', '🚊', '🚉', '🚁', '🛫', '🛬', '🛶', '⛵', '🚤', '🚀', '🛸', '🚢'];
 
+app.get('/cards/:difficulty/:theme', (request, response) => {
 
-app.get('/cards/:difficulty/:theme',(request,response)=>{
-    let data = {cards:[]};
+    var data = {
+        cards: []
+    };
 
-    if(request.params !== null){
-        if(request.params.difficulty !== null && request.params.theme !== null){
+    if (request.params !== null) {
+        if (request.params.difficulty !== null && request.params.theme !== null) {
             const difficulty = request.params.difficulty;
             const theme = request.params.theme;
-            var cards = getCards(difficulty,theme);
-            cards.forEach(card =>{
+            var cards = getCards(difficulty, theme);
+            cards.forEach(card => {
                 data.cards.push(card);
             });
 
             cards.forEach(card => {
                 data.cards.push(card);
             });
+
             shuffleArray(data.cards);
-            
         }
     }
     response.send(JSON.stringify(data));
 });
 
 app.get('/scores', (request, response) => {
-    //https://flip-and-match-game-default-rtdb.firebaseio.com/data/scores.json
-    console.log(request);
-    console.log(request);
-    response.send('score list');
+    const url = `${dataBaseURL}/data/scores.json`;
+    axios.get(url).then(function (result) {
+        console.log(result.data)
+        response.send(result.data);
+    }).catch(function (error) {
+        console.log(error);
+        response.send('Error getting scores!');
+    }).finally(function () {
+        // always executed
+    });
 });
 
+app.post('/score', (request, response) => {
+    let body = [];
+    request.on('data', (chunk) => {
+        body.push(chunk);
+    }).on('end', () => {
+        const jsonData = Buffer.concat(body).toString();
+        if (jsonData !== undefined) {
+            const url = `${dataBaseURL}/data/scores.json`;
+            const score = JSON.parse(jsonData);
+            if (score !== undefined &&
+                score.clicks !== undefined &&
+                score.time !== undefined &&
+                score.score !== undefined) {
+                axios.post(url, score).then(function (result) {
+                    response.send('Score saved!');
+                }).catch(function (error) {
+                    response.send(error);
+                });
+            } else {
+                response.send('Score undefined or null!');
+            }
+        } else {
+            response.send('request.body undefined or null!');
+        }
+    });
+});
 
+// app.listen(port, () => {
+//     console.log(`Example app listening on port ${port}`);
+// });
 
-/* app.listen(port, () =>{
-    console.log(`App is listening on port ${port}`)
-}); */
-
-function randomInteger(min,max){
+function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getIconIndex(inconIndex,iconList){
-    let newIconIndex = randomInteger(0, (iconList.length - 1));
-    if(inconIndex === newIconIndex){
-        return getIconIndex(inconIndex,iconList);
-    }
-    return newIconIndex; 
-}
+function getIconIndex(iconIndex, length, cards) {
 
-function getCards(difficulty,theme){
-    let cards = [];
-    let iconList = null;
-    switch (theme){
+    let newIconIndex = randomInteger(0, (length - 1));
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        if (card.id === newIconIndex) {
+            return getIconIndex(iconIndex, length, cards);
+        }
+    }
+
+    if (iconIndex === newIconIndex) {
+        return getIconIndex(iconIndex, length, cards);
+    }
+
+    return newIconIndex;
+};
+
+function getCards(dificulty, theme) {
+    var cards = [];
+    var iconList = null;
+    switch (theme) {
         case 'food':
             iconList = food;
             break;
@@ -82,31 +127,24 @@ function getCards(difficulty,theme){
             break;
     }
 
-    for(let i=0; i<difficulty;i++){
-        let index = getIconIndex(-1,iconList);
-        let card = {
-            "isDiscovered":false,
-            "icon": iconList[index],
-            "id":index
+    for (let i = 0; i < dificulty; i++) {
+        var iconIndex = getIconIndex(-1, iconList.length, cards);
+        var card = {
+            "isDiscovered": false,
+            "icon": iconList[iconIndex],
+            "id": iconIndex
         }
         cards.push(card);
     }
+
     return cards;
 };
 
-function shuffleArray(array){
-    for(let i= array.length - 1; i > 8; i--){
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i],array[j]] = [array[j],array[i]];
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-app.get("/", (req, res) => {
-    res.send("Api Funcionado");
-});
-
-
-module.exports = app
-
-
-
+module.exports = app;

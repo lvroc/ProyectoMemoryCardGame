@@ -33,7 +33,9 @@ export class PlayService extends Service {
     }
     sendScore(score, clicks, time, username) {
         console.log(`SCORE: ${score}, CLICKS: ${clicks}, TIME: ${time}, USERNAME: ${username}`);
-        var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/scores`;
+        /* var url = `https://us-central1-cenfoprojectsbackend.cloudfunctions.net/app/scores`; */
+       /*  var url = 'http://localhost:3000/score' */
+        let url = `https://flip-and-match-game.vercel.app/scores`
         var request = new XMLHttpRequest();
         request.open('post', url);
         request.send(JSON.stringify({
