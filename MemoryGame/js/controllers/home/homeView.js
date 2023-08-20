@@ -1,5 +1,5 @@
 import {
-    div
+    div, img
 } from "../../libs/html.js";
 import {
     CREDITS_STATE,
@@ -16,6 +16,8 @@ export class HomeView extends ControllerView {
         super(controller, parent);
         this.container.id='homeView';
         this.elementsContainer.className = 'homeView-elementsContainer';
+
+        img({src:'./src/img/logo.svg',className:'homeView-logo'},this.elementsContainer);
         
         var loginBtn = div({
             innerHTML: '<i class="fas fa-user"></i>Login',
