@@ -19,13 +19,29 @@ export class ScoreView extends View {
         var clicksContainer = div({className: 'scoreView-valueContainer'}, valuesContainer);
         var timeContainer = div({className: 'scoreView-valueContainer'}, valuesContainer);
 
-
+        //name
         p({innerHTML: this.score.username}, nameContainer);
-        p({innerHTML: 'SCORE',className:'scoreView-value-title'}, scoreContainer);
+
+        //scores
+        p({
+            innerHTML: '<i class="fas fa-star"></i>SCORE',
+            className: 'scoreView-value-title'
+        }, scoreContainer);
         p({innerHTML: this.score.score,className: 'scoreView-value-description'}, scoreContainer);
-        p({innerHTML: 'CLICKS',className: 'scoreView-value-title'}, clicksContainer);
+
+        //clicks
+        p({
+            innerHTML: '<i class="fas fa-mouse-pointer"></i>CLICKS',
+            className: 'scoreView-value-title'
+        }, clicksContainer);
         p({innerHTML: this.score.clicks,className: 'scoreView-value-description'},clicksContainer);
-        p({innerHTML: 'TIME',className: 'scoreView-value-title'}, timeContainer);
+
+
+        //time
+        p({
+            innerHTML: '<i class="fas fa-stopwatch"></i>TIME',
+            className: 'scoreView-value-title'
+        }, timeContainer);
         p({innerHTML: this.score.time,className: 'scoreView-value-description'}, timeContainer);
 
     }

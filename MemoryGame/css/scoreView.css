@@ -7,7 +7,7 @@
     width: 30%;
     background-color: #0C0ECE;
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 15px 15px 0px 0px;
     border-width: 2px;
     border-color: #C2C2FB;
     border-style: solid;
@@ -24,9 +24,10 @@
     background-color: #6667F6;
     width: 100%;
     border-bottom: 2px #C2C2FB solid;
+    border-radius: 13px 13px 0px 0px;
 }
 .scoreView-nameContainer p{
-    color:#C2C2FB;
+    color: rgb(255, 255, 255);
 }
 
 
@@ -49,29 +50,36 @@
 }
 
 .scoreView-value-title{
-    color: #C2C2FB;
-    font-size: 15px;
+    color:  rgb(255, 255, 255);
+    font-size: 20px;
 }
 
 .scoreView-value-description{
-    color: #A3A4FA;
+    color:  rgb(255, 255, 255);
     font-size: 40px;  
 }
 
+.scoreView-value-title i{
+    margin-right: 5px;
+    color:  rgb(255, 255, 255);
+}
 
-@media (max-width: 712px) {
+
+@media (max-width: 1005px) {
     .scoreView{
         width: 90%;
     }
     .scoreView-nameContainer{
-        font-size: 20px;
+        font-size: 25px;
     }
     .scoreView-value-title{
-    font-size: 12px;
+    font-size: 14px;
     }
     .scoreView-value-description{
     font-size: 20px;
     }
 }
+
+
 
 

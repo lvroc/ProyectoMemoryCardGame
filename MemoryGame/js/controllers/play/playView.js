@@ -15,15 +15,15 @@ export class PlayView extends ControllerView {
         }, this.elementsContainer);
 
         this.clicksText = p({
-            innerHTML: 'Clicks: 0',
+            innerHTML: '<i class="fas fa-mouse-pointer"></i>Clicks: 0',
             className: 'playView-text'
         }, this.hudContainer);
         this.timerText = p({
-            innerHTML: 'Time 0',
+            innerHTML: '<i class="fas fa-stopwatch"></i>Time 0',
             className: 'playView-text'
         }, this.hudContainer);
         this.resetBtn = div({
-            innerHTML: 'Reset',
+            innerHTML: '<i class="fas fa-undo-alt"></i>Reset',
             className: 'game-button playView-resetBtn',
             onclick: this.onResetBtn.bind(this)
         }, this.hudContainer);
@@ -42,7 +42,7 @@ export class PlayView extends ControllerView {
     }
 
     updateHUD(clicks, time) {
-        this.clicksText.innerHTML = `Clicks: ${clicks}`;
-        this.timerText.innerHTML = `Time: ${time}`;
+        this.clicksText.innerHTML = `<i class="fas fa-mouse-pointer"></i>Clicks: ${clicks}`;
+        this.timerText.innerHTML = `<i class="fas fa-stopwatch"></i>Time: ${time}`;
     }
 }
